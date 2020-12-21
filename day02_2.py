@@ -10,19 +10,18 @@ f.close()
 def valid_passwords(val):
     """Function that splits line by line and counts valid passwords"""
     my_count = 0
+    c = 0
     for line in val:
         line_to_split = line.split()
         replace_ch = line_to_split[1].replace(":", "")
-        minmax = line_to_split[0].split("-")
+        low_high = line_to_split[0].split("-")
         new_line = (line_to_split[2])
-        low = minmax[0]
-        high = minmax[1]
+        low = low_high[0]
+        high = low_high[1]
 
-        for num in range(1, len(new_line)+1):
-            print(num)
-            if replace_ch == new_line[int(low)] or replace_ch == new_line[int(high)]:
-                my_count = my_count + 1
-                break
+        if (replace_ch == new_line[int(low)-1]) ^ (replace_ch == new_line[int(high)-1]):
+            my_count = my_count + 1
+
     return my_count
 
 RESULTS = valid_passwords(v)
