@@ -10,7 +10,7 @@ f.close()
 def valid_passwords(val):
     """Function that splits line by line and counts valid passwords"""
     my_count = 0
-    c = 0
+
     for line in val:
         line_to_split = line.split()
         replace_ch = line_to_split[1].replace(":", "")
