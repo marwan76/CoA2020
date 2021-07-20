@@ -4,19 +4,18 @@ with open("day04_input.txt", 'r') as f:
 f.close()
 valid_pass = 0
 
-fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
+attribute_list = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
 current = 0
 
 for line in lines:
-    if line == "\n":
-        if current == len(fields):
+    if not line.strip():
+        if current == len(attribute_list):
             valid_pass += 1
         current = 0
-        continue
 
-    for field in line.split():
+    for field in line.strip().split():
         key, val = field.split(':')
-        if key in field:
+        if key in attribute_list:
             current += 1
 print(valid_pass)
